@@ -52,6 +52,7 @@ h1 {
 }
 
 #text-input {
+    color: var(--text-color);
     font-size: 1.5rem;
     text-align: center;
     background-color: var(--color-4);
