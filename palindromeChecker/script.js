@@ -10,7 +10,7 @@ const checkIfPalindrome = input => {
     } else { // clean & reverse the string
         const lowercaseString = input.replace(/[^a-zA-Z0-9]/gi, '').toLowerCase();
         const reversedString = lowercaseString.split("").reverse().join("");
-        console.log(reversedString);
+        console.log(`${originWord} ${reversedString === originWord ? 'is' : 'is not'} a palindrome`);
     }
 }
 
@@ -18,4 +18,3 @@ checkButton.addEventListener("click", () => {
     checkIfPalindrome(userInput.value);
     userInput.value = "";
 });
-
