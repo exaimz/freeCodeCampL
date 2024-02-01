@@ -3,14 +3,18 @@ const checkButton = document.getElementById("check-btn");
 const result = document.getElementById("result");
 
 const checkIfPalindrome = input => {
-    originWord = input;
+    let originWord;
 
     if (input === "") {
-        alert("Please enter a word.");
+        alert("Please input a value");
     } else { // clean & reverse the string
-        const lowercaseString = input.replace(/[^a-zA-Z0-9]/gi, '').toLowerCase();
+        originWord = input;
+        const lowercaseString = input.replace(/[^A-Za-z0-9]/gi, '').toLowerCase();
         const reversedString = lowercaseString.split("").reverse().join("");
-        console.log(`${originWord} ${reversedString === originWord ? 'is' : 'is not'} a palindrome`);
+        console.log(reversedString); 
+
+        result.classList.remove("hide");
+        result.innerHTML = (`${originWord} ${reversedString === lowercaseString ? 'is' : 'is not'} a palindrome`);
     }
 }
 
@@ -18,3 +22,11 @@ checkButton.addEventListener("click", () => {
     checkIfPalindrome(userInput.value);
     userInput.value = "";
 });
+
+userInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      checkIfPalindrome(userInput.value);
+      userInput.value = '';
+    }
+  });
+  
