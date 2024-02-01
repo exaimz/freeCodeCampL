@@ -1,0 +1,76 @@
+:root {
+    /* Colors */
+    --text-color: #0E103D;
+    --color-1: #69306D;
+    --color-2: #A5668B;
+    --color-3: #D3BCC0;
+    --color-4: #F2D7EE;
+
+    /* font sizes */
+    --root-font-size: 18px;
+    --font-size: var(--root-font-size);
+
+    /* font-families*/
+    --font-headline: "Roboto Mono", monospace;
+    --font-body: "Lato", sans-serif;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-3);
+    color: var(--text-color);
+    font-family: var(--font-body);
+}
+
+h1 {
+    font-family: var(--font-headline);
+    margin: 0;
+}
+
+.main-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.palindrome-div {
+    background-color: var(--color-4);
+    max-width: 33%;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#text-input {
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: var(--color-4);
+    border: none;
+    border-bottom: var(--color-3) 2px solid;
+}
+
+#text-input:focus {
+    outline: none;
+}
+
+#check-btn {
+    color: white;
+    background-color: var(--color-2);
+    border-color: var(--color-2);
+}
+
+#check-btn:hover {
+    cursor: pointer;
+    background-color: var(--color-1);
+    border-color: var(--color-1);
+}
