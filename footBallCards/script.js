@@ -174,3 +174,7 @@ const myFavoriteFootballTeam = {
   ],
 };
 
+//Freeze the object so it can't be modified
+Object.freeze(myFavoriteFootballTeam);
+
+console.log(myFavoriteFootballTeam);
