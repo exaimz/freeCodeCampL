@@ -177,4 +177,61 @@ const myFavoriteFootballTeam = {
 //Freeze the object so it can't be modified
 Object.freeze(myFavoriteFootballTeam);
 
-console.log(myFavoriteFootballTeam);
+// Access the keys and assign their values to a variable
+/*////////////////////////////////// 
+Using dot notation
+  const sport = myFavoriteFootballTeam.sport;
+  const team = myFavoriteFootballTeam.team; 
+*///////////////////////////////////
+
+// Using object destructuring syntax 
+const {sport, team, year, players} = myFavoriteFootballTeam;
+const {coachName} = myFavoriteFootballTeam.headCoach;
+
+//Display team information on the screen
+typeOfSport.textContent = sport;
+teamName.textContent = team;
+worldCupYear.textContent = year;
+headCoach.textContent = coachName;
+
+//Create function for filtering teamates
+const setPlayerCards = (arr = players) => {
+  playerCards.innerHTML += arr
+  .map(
+    ({name, position, number, isCaptain, nickname}) => 
+      `
+      <div class="player-card">
+        <h2>${name} ${isCaptain ? "(Captain)" : ""}</h2>
+        <p>Position: ${position}</p>
+        <p>Number: ${number}</p>
+        <p>Nickname: ${nickname !== null ? nickname : "N/A"}</p>
+      </div>
+      `
+  ).join("");
+};
+
+//Create listener that is a function to detect when user makes selection
+playersDropdownList.addEventListener("change", (e) => {
+  playerCards.innerHTML = "";
+
+  switch(e.target.value) {
+    case "nickname": 
+      setPlayerCards(players.filter((player) => player.nickname !== null));
+      break;
+    case "forward":
+      setPlayerCards(players.filter((player) => player.position == "forward"));
+      break;
+    case "midfielder":
+      setPlayerCards(players.filter((player) => player.position == "midfielder"));
+      break;
+    case "defender":
+      setPlayerCards(players.filter((player) => player.position == "defender"));
+      break;
+    case "goalkeeper":
+      setPlayerCards(players.filter((player) => player.position == "goalkeeper"));
+      break;
+    default:
+      setPlayerCards();
+      break;
+    }
+});
