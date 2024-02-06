@@ -14,7 +14,7 @@ const dateInput = document.getElementById("date-input");
 const descriptionInput = document.getElementById("description-input");
 
 //This is where the local data will live
-const taskData = [];
+const taskData = JSON.parse(localStorage.getItem("data")) || [];
 let currentTask = {};
 
 //Create function to add or update a task
@@ -34,6 +34,8 @@ const addOrUpdateTask = () => {
   } else {
     taskData[dataArrIndex] = taskObj;
   }
+
+  localStorage.setItem("data", JSON.stringify(taskData));
 
   updateTaskContainer();
   reset();
@@ -61,6 +63,7 @@ const deleteTask = (buttonEl) => {
   );
   buttonEl.parentElement.remove();
   taskData.splice(dataArrIndex, 1);
+  localStorage.setItem("data", JSON.stringify(taskData));
 };
 
 const editTask = (buttonEl) => {
@@ -84,6 +87,10 @@ const reset = () => {
   taskForm.classList.toggle("hidden");
   currentTask = {};
 };
+
+if (taskData.length) {
+  updateTaskContainer();
+}
 
 //Open and close the task form
 openTaskFormBtn.addEventListener("click", () =>
@@ -112,10 +119,4 @@ taskForm.addEventListener("submit", (e) => {
   addOrUpdateTask();
 });
 
-const myTaskArr = [
-  { task: "Walk the Dog", date: "22-04-2022" },
-  { task: "Read some books", date: "02-11-2023" },
-  { task: "Watch football", date: "10-08-2021" },
-];
 
-localStorage.setItem("data", JSON.stringify(myTaskArr));
