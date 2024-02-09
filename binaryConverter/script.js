@@ -2,19 +2,13 @@ const numberInput = document.getElementById("number-input");
 const convertBtn = document.getElementById("convert-btn");
 const result = document.getElementById("result");
 
+//create function that connverts numbers to binary
 const decimalToBinary = (input) => {
-  let binary = "";
-
-  if (input === 0) {
-    binary = "0";
+  if (input === 0 || input === 1) {
+    return String(input);
+  } else {
+    return decimalToBinary(Math.floor(input / 2)) + (input % 2);
   }
-
-  while (input > 0) {
-    binary = (input % 2) + binary;
-    input = Math.floor(input / 2);
-  }
-
-  result.innerText = binary;
 };
 
 const checkUserInput = () => {
@@ -25,7 +19,7 @@ const checkUserInput = () => {
   }
 
   //call decimalToBinary function and convert the numberInput value to an Int
-  decimalToBinary(parseInt(numberInput.value));
+  result.textContent = decimalToBinary(parseInt(numberInput.value));
   numberInput.value = "";
 };
 
