@@ -2,7 +2,6 @@ const numberInput = document.getElementById("number-input");
 const convertBtn = document.getElementById("convert-btn");
 const result = document.getElementById("result");
 
-//create function that connverts numbers to binary
 const decimalToBinary = (input) => {
   if (input === 0 || input === 1) {
     return String(input);
@@ -11,15 +10,28 @@ const decimalToBinary = (input) => {
   }
 };
 
+const showAnimation = () => {
+  console.log("free");
+  setTimeout(() => {
+    console.log("Code");
+  }, 1000);
+  console.log("Camp");
+};
+
 const checkUserInput = () => {
-  //Create an alert that tells the user they dont have a number or it is invalid
-  if (!numberInput.value || isNaN(parseInt(numberInput.value))) {
+  const inputInt = parseInt(numberInput.value);
+
+  if (!numberInput.value || isNaN(inputInt)) {
     alert("Please provide a decimal number");
     return;
   }
 
-  //call decimalToBinary function and convert the numberInput value to an Int
-  result.textContent = decimalToBinary(parseInt(numberInput.value));
+  if (inputInt === 5) {
+    showAnimation();
+    return;
+  }
+
+  result.textContent = decimalToBinary(inputInt);
   numberInput.value = "";
 };
 
