@@ -2,30 +2,51 @@ const number = document.getElementById("number");
 const button = document.getElementById("convert-btn");
 const output = document.getElementById("output");
 const romanNumeralObj = {
-    M: 1000,
-    CM: 900,
-    D: 500,
-    CD: 400,
-    C: 100,
-    XC: 90,
-    L: 50,
-    XL: 40,
-    X: 10,
-    IX: 9,
-    V: 5,
-    IV: 4,
-    I: 1, 
+    1000: 'M',
+    900: 'CM',
+    500: 'D',
+    400: 'CD',
+    100: 'C',
+    90: 'XC',
+    50: 'L',
+    40: 'XL',
+    10: 'X',
+    9: 'IX',
+    5: 'V',
+    4: 'IV',
+    1: 'I', 
 };
 
-const checkUserInput = () => {
-    if (!number.value) {
-        alert("Please enter a valid number");
+const convertToNumeral = (input) => {
+    result = '';
+    if (input <= -1) {
+        output.textContent = 'Please enter a number greater than or equal to 1';
         return;
-    } else if (number.value <= -1) {
-        output.textContent = "Please enter a number greater than or equal to 1";
-    } else if (number.value >= 4000) {
-        output.textContent = " Please enter a number less than or equal to 3999";
-    }
+    } else if (input >= 4000) {
+        output.textContent = 'Please enter a number less than or equal to 3999';
+        return;
+    } else {
+        Object.keys(romanNumeralObj).reverse().forEach(value => {
+            while (input >= value) {
+                result += romanNumeralObj[value];
+                input -= value;
+            }
+        });
+        console.log(result);
+        return result;
+    };
+}
+
+const checkUserInput = () => {
+    const numberInt = parseInt(number.value);
+
+    if (!numberInt || isNaN(numberInt)) {
+        alert('Please enter a valid number');
+        return;
+    } 
+
+    output.textContent = convertToNumeral(numberInt);
+    number.value = '';
 }
 
 button.addEventListener("click", checkUserInput);
