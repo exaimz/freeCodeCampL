@@ -18,12 +18,12 @@ const romanNumeralObj = {
 };
 
 const convertToNumeral = (input) => {
-    result = '';
-    if (input <= -1) {
-        output.textContent = 'Please enter a number greater than or equal to 1';
+    const result = '';
+    if (input <= 0) {
+        output.innerHTML = 'Please enter a number greater than or equal to 1';
         return;
     } else if (input >= 4000) {
-        output.textContent = 'Please enter a number less than or equal to 3999';
+        output.innerHTML = 'Please enter a number less than or equal to 3999';
         return;
     } else {
         Object.keys(romanNumeralObj).reverse().forEach(value => {
@@ -32,7 +32,6 @@ const convertToNumeral = (input) => {
                 input -= value;
             }
         });
-        console.log(result);
         return result;
     };
 }
@@ -41,11 +40,11 @@ const checkUserInput = () => {
     const numberInt = parseInt(number.value);
 
     if (!numberInt || isNaN(numberInt)) {
-        alert('Please enter a valid number');
+        output.innerHTML = 'Please enter a valid number';
         return;
     } 
 
-    output.textContent = convertToNumeral(numberInt);
+    output.innerHTML = convertToNumeral(numberInt);
     number.value = '';
 }
 
