@@ -10,11 +10,26 @@ const newEvent = form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     //Get task value from input and append it to the new li element
-    const newTask = taskInput.value;
+    const newTaskText = taskInput.value;
     const liElement = document.createElement("li");
-    liElement.classList.add("task");
+    const newTaskDiv = document.createElement("div");
 
-    taskList.appendChild(liElement);
-    liElement.innerHTML = newTask;
+    resultDiv.appendChild(newTaskDiv);
+    newTaskDiv.classList.add("newTask");
+
+    newTaskDiv.appendChild(liElement);
+    liElement.classList.add("taskText");
+
+    
+
+    liElement.innerHTML = newTaskText;
+
+    //create delete and complete buttons for new li element
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("deleteButton");
+
+    newTaskDiv.appendChild(deleteButton);
+    deleteButton.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+
     taskInput.value = "";  
 });
