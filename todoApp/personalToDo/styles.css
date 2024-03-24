@@ -75,6 +75,7 @@ main {
     align-items: center;
     gap: 1rem;
     background-color: #8a5160;
+    transition: ease-in .5sec;
 }
 
 .taskText {
@@ -96,3 +97,13 @@ main {
 .completedButton {
     background-color: #658c77;
 }
+
+.fade-in {
+    animation: fadeIn .5s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
