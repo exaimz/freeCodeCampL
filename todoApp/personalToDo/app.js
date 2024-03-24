@@ -1,44 +1,43 @@
 const form = document.getElementById("form");
-let taskInput = document.getElementById("task-input");
-const submitButton = document.getElementById("submit-button");
+const taskInput = document.getElementById("task-input");
 const resultDiv = document.getElementById("result-div");
-const taskList = document.getElementById("task-list");
 
-const newTask = (input) => {
-    //CREATE TASK ELEMENT
+const createTaskElement = (input) => {
     const newTaskDiv = document.createElement("div");
-    newTaskDiv.classList.add("newTask");
-    newTaskDiv.classList.add("fade-in");
+    newTaskDiv.classList.add("newTask", "fade-in");
 
-    //CREATE TASK TEXT
     const taskText = document.createElement("p");
     taskText.classList.add("taskText");
-    taskText.innerHTML = input;
+    taskText.textContent = input;
 
-    //CREATE COMPLETED BUTTON
     const completedButton = document.createElement("button");
     completedButton.classList.add("completedButton");
     completedButton.innerHTML = `<i class="fa-solid fa-check"></i>`;
 
-    //CREATE DELETE BUTTON
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("deleteButton");
     deleteButton.innerHTML = `<i class="fa-solid fa-trash"></i>`;
 
-    //APPEND ELEMENTS 
+    newTaskDiv.append(completedButton, taskText, deleteButton);
     resultDiv.appendChild(newTaskDiv);
-    newTaskDiv.appendChild(completedButton);
-    newTaskDiv.appendChild(taskText);
-    newTaskDiv.appendChild(deleteButton);
-}
 
-const newTaskEvent = form.addEventListener("submit", (e) => {
-    //Prevent page reloading on submit
+    taskInput.value = "";
+
+    // Attach the delete button event listener
+    deleteButton.addEventListener("click", () => {
+        deleteTask(newTaskDiv);
+    });
+    
+};
+
+const deleteTask = (taskDiv) => {
+    taskDiv.classList.add("fade-out");
+    setTimeout(() => {
+        resultDiv.removeChild(taskDiv);
+    }, 400);
+};
+
+form.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    //Create New Task
-    newTask(taskInput.value);
-
-    //Clear input
-    taskInput.value = "";  
+    createTaskElement(taskInput.value);
 });
