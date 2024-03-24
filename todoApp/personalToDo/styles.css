@@ -7,8 +7,13 @@
     font-family: "Poppins", sans-serif;
 }
 
+html {
+    min-height: 100%;
+}
+
 body {
-    background-color: #e5a7b7;
+    overflow: auto;
+    background-image: linear-gradient(180deg, #e5a7b7 40%, #986f79);
 }
 
 header {
@@ -34,6 +39,7 @@ main {
     background-color: #b47b89;
     text-align: center;
     color: white;
+    outline: none;
 }
 
 #task-input::placeholder {
@@ -50,7 +56,7 @@ main {
 }
 
 #submit-button {
-    background-color: #8f6973;
+    background-color: #8a5160;
     color: white;
     cursor: pointer;
 }
@@ -68,7 +74,7 @@ main {
     display: flex;
     align-items: center;
     gap: 1rem;
-    background-color: #b3828f;
+    background-color: #8a5160;
 }
 
 .taskText {
