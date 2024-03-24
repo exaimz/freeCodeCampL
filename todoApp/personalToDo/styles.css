@@ -12,10 +12,11 @@ body {
 }
 
 header {
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
 }
 
 main {
@@ -25,41 +26,40 @@ main {
     align-items: center;
 }
 
+#form {
+    display: flex;
+}
+
+#task-input {
+    background-color: #b47b89;
+    text-align: center;
+    color: white;
+}
+
+#task-input::placeholder {
+    color: rgb(218, 197, 197);
+    text-align: center;
+    font-style: italic;
+    font-size: 14px;
+}
+
 #task-input,
 #submit-button {
-    padding: .5rem .5rem;
+    padding: .5rem 1rem;
     border: none;
 }
 
 #submit-button {
-    background-color: #d4596e;
+    background-color: #8f6973;
     color: white;
+    cursor: pointer;
 }
 
-/* #result-div {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 80%;
-    justify-content: center;
-    align-items: stretch;
-}
-
-#task-list {
-    display: flex;
-    flex-wrap: wrap;
-    min-width: 40%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-} */
 #result-div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     gap: 1rem;
     margin-top: 1rem;
 }
@@ -68,9 +68,7 @@ main {
     display: flex;
     align-items: center;
     gap: 1rem;
-
     background-color: #b3828f;
-    padding-left: 1rem;
 }
 
 .taskText {
@@ -80,9 +78,15 @@ main {
     color: white;
 }
 
-.deleteButton {
+.deleteButton,
+.completedButton {
     padding: 1rem 1rem;
-    background-color: #8c656f;
+    background-color: #be4b47;
     border: none;
     color: white;
+    cursor: pointer;
+}
+
+.completedButton {
+    background-color: #658c77;
 }
