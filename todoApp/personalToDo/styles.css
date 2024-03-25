@@ -78,6 +78,16 @@ main {
     transition: ease-in .5sec;
 }
 
+.newTask:hover {
+    background-color: #af838e;
+}
+
+.newTask:hover .taskButton{
+    padding: 1.2rem;
+    transition: all .3s ease;
+    font-size: 1.2rem;
+}
+
 .taskText {
     list-style-type: none;
     text-align: center;
@@ -94,8 +104,18 @@ main {
     cursor: pointer;
 }
 
+.deleteButton:hover {
+    background-color: #992521;
+    transition: all .3s ease;
+}
+
 .completedButton {
     background-color: #658c77;
+}
+
+.completedButton:hover {
+    background-color: #128347;
+    transition: all .3s ease;
 }
 
 .fade-in {

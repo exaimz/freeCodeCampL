@@ -2,6 +2,14 @@ const form = document.getElementById("form");
 const taskInput = document.getElementById("task-input");
 const resultDiv = document.getElementById("result-div");
 
+const taskValidation = (input) => {
+    if (input === "") {
+        return alert("Please enter valid task.");
+    } else {
+        return createTaskElement(input);
+    }
+}
+
 const createTaskElement = (input) => {
     const newTaskDiv = document.createElement("div");
     newTaskDiv.classList.add("newTask", "fade-in");
@@ -11,11 +19,11 @@ const createTaskElement = (input) => {
     taskText.textContent = input;
 
     const completedButton = document.createElement("button");
-    completedButton.classList.add("completedButton");
+    completedButton.classList.add("completedButton", "taskButton");
     completedButton.innerHTML = `<i class="fa-solid fa-check"></i>`;
 
     const deleteButton = document.createElement("button");
-    deleteButton.classList.add("deleteButton");
+    deleteButton.classList.add("deleteButton", "taskButton");
     deleteButton.innerHTML = `<i class="fa-solid fa-trash"></i>`;
 
     newTaskDiv.append(completedButton, taskText, deleteButton);
@@ -39,5 +47,5 @@ const deleteTask = (taskDiv) => {
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    createTaskElement(taskInput.value);
+    taskValidation(taskInput.value);
 });
